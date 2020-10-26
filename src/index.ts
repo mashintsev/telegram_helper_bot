@@ -20,7 +20,7 @@ Bot.startPolling();
 
 Bot.command("help", async (ctx) => {
     const { message } = ctx;
-    return ctx.reply("Help me");
+    return ctx.reply("Help me 1123");
   });
 
 
