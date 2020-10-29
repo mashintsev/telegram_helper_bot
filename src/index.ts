@@ -18,13 +18,29 @@ const Bot = new Telegraf(TELEGRAM_TOKEN);
 
 Bot.startPolling();
 
-Bot.command("help", async (ctx) => {
+Bot.command("help", async (ctx:TelegrafContext) => {
     const { message } = ctx;
-    return ctx.reply("Help me 1123");
-  });
+
+    return ctx.reply("Помоги мне ");
+});
+
+Bot.on('message', (ctx:TelegrafContext) => {
+  if(ctx.message && ctx.message.text) {
+    console.log(ctx.message.text)
+    const array = ctx.message.text.split(' ');
+    console.log(array);
+
+    const a = Number.parseFloat(array[0]);
+    const b = Number.parseFloat(array[1]);
+    console.log('number a: ' + a);
+    console.log('number b: ' + b);
+    return ctx.reply('Summa = ' + (a+b));
+  }
+  return ctx.reply('1');
+})
 
 
 Bot.command("isogd", async (ctx) => {
     const { message } = ctx;
     return ctx.reply("ISOGD");
-  });
+});
